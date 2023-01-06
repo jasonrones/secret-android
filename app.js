@@ -1,17 +1,18 @@
-// Import Libraries
+// Import Express
+const path = require('path');
 const express = require('express');
-
-// Define parameters
 const app = express();
+
+// Server Configuration
 const hostname = '0.0.0.0';
 const port = 3000;
 
-app.use(express.static('public'));
-
-app.get('/', (req, res) => {
-  res.send('Hello, Express!')
+// Requests
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Initialize App
 app.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
